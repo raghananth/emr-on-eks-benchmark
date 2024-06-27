@@ -62,7 +62,8 @@ jobs:
       with:
         context: ./docker/hadoop-aws-3.3.1/
         push: ${{ github.event_name != 'pull_request' }}
-        tags: ${{ steps.meta.outputs.tags }}-${{ matrix.arch }}
+        #tags: ${{ steps.meta.outputs.tags }}-${{ matrix.arch }}
+        tags: ${{ env.IMAGE_VERSION }}-${{ matrix.arch }}
         #labels: ${{ steps.meta.outputs.labels }}
         labels: ${{ env.IMAGE_VERSION }}
 
