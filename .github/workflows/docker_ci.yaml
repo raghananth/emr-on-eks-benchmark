@@ -14,7 +14,7 @@ env:
 jobs:
   build:
     # runs-on: ubuntu-latest
-    runs-on: codebuild-spark-history-server-build-${{ matrix.arch }}-${{ github.run_id }}-${{ github.run_attempt }}
+    runs-on: codebuild-emr-on-eks-benchmark-${{ matrix.arch }}-${{ github.run_id }}-${{ github.run_attempt }}
     # Need this to authenticate using openid
     permissions:
       id-token: write # This is required for requesting the JWT
@@ -69,7 +69,7 @@ jobs:
   manifest:
     needs: build
     # runs-on: ubuntu-latest
-    runs-on: codebuild-spark-history-server-build-arm64-${{ github.run_id }}-${{ github.run_attempt }}
+    runs-on: codebuild-emr-on-eks-benchmark-arm64-${{ github.run_id }}-${{ github.run_attempt }}
     # Need this to authenticate using openid
     permissions:
       id-token: write # This is required for requesting the JWT
