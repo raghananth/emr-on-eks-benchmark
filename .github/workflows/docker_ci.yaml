@@ -163,7 +163,8 @@ jobs:
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ steps.meta_benchmark.outputs.tags }}-${{ matrix.arch }}
         labels: ${{ steps.meta_benchmark.outputs.labels }}
-        build-args: SPARK_BASE_IMAGE:${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}
+        build-args: |
+            SPARK_BASE_IMAGE=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}
 
   manifest_benchmark:
     needs: build_benchmark
