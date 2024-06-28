@@ -164,7 +164,7 @@ jobs:
         tags: ${{ steps.meta_benchmark.outputs.tags }}-${{ matrix.arch }}
         labels: ${{ steps.meta_benchmark.outputs.labels }}
         build-args: |
-            SPARK_BASE_IMAGE=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}
+            SPARK_BASE_IMAGE=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:main
 
   manifest_benchmark:
     needs: build_benchmark
