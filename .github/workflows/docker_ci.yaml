@@ -55,9 +55,9 @@ jobs:
       id: meta_spark
       uses: docker/metadata-action@v5
       with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}-${{ matrix.arch }}
-        # tags: |
-        #   type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}-${{ matrix.arch }}
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}
+        tags: |
+          type=raw,value=${{ env.IMAGE_NAME_SPARK_TAG }}-${{ matrix.arch }}
 
     # 5. Build and push to registry
     # https://github.com/docker/build-push-action
@@ -100,9 +100,9 @@ jobs:
       id: meta_spark
       uses: docker/metadata-action@v5
       with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
-        # tags: |
-        #   type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}
+        tags: |
+          type=raw,value=${{ env.IMAGE_NAME_SPARK_TAG }}
 
     # 4. Build and push manifest to registry
     # https://github.com/docker/build-push-action
@@ -157,9 +157,9 @@ jobs:
       id: meta_benchmark
       uses: docker/metadata-action@v5
       with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}-${{ matrix.arch }}
-        # tags: |
-        #   type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}-${{ matrix.arch }}
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}
+        tags: |
+          type=raw,value=${{ env.IMAGE_NAME_SPARK_TAG }}-${{ matrix.arch }}
 
     # 5. Build and push to registry
     # https://github.com/docker/build-push-action
@@ -204,9 +204,9 @@ jobs:
       id: meta_benchmark
       uses: docker/metadata-action@v5
       with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
-        # tags: |
-        #   type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}
+        tags: |
+          type=raw,value=${{ env.IMAGE_NAME_SPARK_TAG }}
 
     # 4. Build and push manifest to registry
     # https://github.com/docker/build-push-action
