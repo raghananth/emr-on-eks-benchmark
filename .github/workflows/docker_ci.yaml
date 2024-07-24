@@ -56,6 +56,8 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
+        tags: |
+          type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
 
     # 5. Build and push to registry
     # https://github.com/docker/build-push-action
@@ -99,6 +101,8 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
+        tags: |
+          type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
 
     # 4. Build and push manifest to registry
     # https://github.com/docker/build-push-action
@@ -154,6 +158,8 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
+        tags: |
+          type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
 
     # 5. Build and push to registry
     # https://github.com/docker/build-push-action
@@ -199,6 +205,8 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
+        tags: |
+          type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
 
     # 4. Build and push manifest to registry
     # https://github.com/docker/build-push-action
