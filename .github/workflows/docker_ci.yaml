@@ -56,8 +56,8 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
-        tags: |
-          type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
+        # tags: |
+        #   type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
 
     # 5. Build and push to registry
     # https://github.com/docker/build-push-action
@@ -67,7 +67,7 @@ jobs:
         context: ./docker/hadoop-aws-3.3.1/
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ steps.meta_spark.outputs.tags }}-${{ matrix.arch }}
-        labels: ${{ steps.meta_spark.outputs.labels }}
+        # labels: ${{ steps.meta_spark.outputs.labels }}
 
   manifest_spark:
     needs: build_spark
@@ -101,8 +101,8 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
-        tags: |
-          type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
+        # tags: |
+        #   type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
 
     # 4. Build and push manifest to registry
     # https://github.com/docker/build-push-action
@@ -158,8 +158,8 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
-        tags: |
-          type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
+        # tags: |
+        #   type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
 
     # 5. Build and push to registry
     # https://github.com/docker/build-push-action
@@ -169,7 +169,7 @@ jobs:
         context: ./docker/benchmark-util/
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ steps.meta_benchmark.outputs.tags }}-${{ matrix.arch }}
-        labels: ${{ steps.meta_benchmark.outputs.labels }}
+        # labels: ${{ steps.meta_benchmark.outputs.labels }}
         build-args: |
             SPARK_BASE_IMAGE=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SPARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
 
@@ -205,8 +205,8 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
-        tags: |
-          type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
+        # tags: |
+        #   type=raw,value=${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BENCHMARK }}:${{ env.IMAGE_NAME_SPARK_TAG }}
 
     # 4. Build and push manifest to registry
     # https://github.com/docker/build-push-action
