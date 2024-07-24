@@ -67,7 +67,7 @@ jobs:
         context: ./docker/hadoop-aws-3.3.1/
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ steps.meta_spark.outputs.tags }}
-        # labels: ${{ steps.meta_spark.outputs.labels }}
+        labels: ${{ steps.meta_spark.outputs.labels }}
 
   manifest_spark:
     needs: build_spark
