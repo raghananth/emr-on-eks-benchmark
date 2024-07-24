@@ -1,7 +1,7 @@
 # // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # // SPDX-License-Identifier: MIT-0
-#ARG SPARK_BASE_IMAGE=public.ecr.aws/w5m3x7g4/spark:3.1.2_hadoop_3.3.1
-ARG SPARK_BASE_IMAGE=public.ecr.aws/q6l6e9i6/spark:main
+# ARG SPARK_BASE_IMAGE=public.ecr.aws/w5m3x7g4/spark:3.1.2_hadoop_3.3.1
+ARG SPARK_BASE_IMAGE=public.ecr.aws/q6l6e9i6/spark:3.1.2_hadoop_3.3.1
 
 FROM amazonlinux:2 AS tpc-toolkit
 
@@ -18,14 +18,13 @@ RUN yum update -y && \
 FROM mozilla/sbt:8u292_1.5.4 AS sbtenv
 
 # Build the Databricks SQL perf library from the local Spark version
-#RUN git clone -b delta https://github.com/aws-samples/emr-on-eks-benchmark.git /tmp/emr-on-eks-benchmark && \
-#    rm -rf /tmp/emr-on-eks-benchmark/spark-sql-perf && \
-#    rm -rf /tmp/emr-on-eks-benchmark/benchmark && \
-#    rm -rf /tmp/emr-on-eks-benchmark/delta-perf
-#ADD spark-sql-perf /tmp/emr-on-eks-benchmark/spark-sql-perf
-#ADD benchmark /tmp/emr-on-eks-benchmark/benchmark
-#ADD delta-perf /tmp/emr-on-eks-benchmark/delta-perf
-RUN git clone -b delta https://github.com/aws-samples/emr-on-eks-benchmark.git /tmp/emr-on-eks-benchmark
+RUN git clone -b delta https://github.com/aws-samples/emr-on-eks-benchmark.git /tmp/emr-on-eks-benchmark && \
+    rm -rf /tmp/emr-on-eks-benchmark/spark-sql-perf && \
+    rm -rf /tmp/emr-on-eks-benchmark/benchmark && \
+    rm -rf /tmp/emr-on-eks-benchmark/delta-perf
+ADD spark-sql-perf /tmp/emr-on-eks-benchmark/spark-sql-perf
+ADD benchmark /tmp/emr-on-eks-benchmark/benchmark
+ADD delta-perf /tmp/emr-on-eks-benchmark/delta-perf
 RUN cd /tmp/emr-on-eks-benchmark/spark-sql-perf/ && sbt +package
 
 # Use the compiled Databricks SQL perf library to build benchmark utility
